@@ -11,7 +11,7 @@ function startpreview(box) {
             audios[i].softstop();
     let a = document.createElement("audio");
     let s = document.createElement("source");
-    s.src = `https://catboy.best/preview/audio/${box.sid}?set=1`;
+    s.src = `https://cdn.sayobot.cn:25225/preview/${box.sid}.mp3`;
     s.type = "audio/mpeg";
     a.appendChild(s);
     a.volume = 0;
@@ -45,7 +45,7 @@ function startdownload(box) {
     if (box.downloading) {
         return;
     }
-    let url = "https://catboy.best/d/" + box.sid + "n";
+    let url = "https://txy1.sayobot.cn/beatmaps/download/mini/" + box.sid;
     box.downloading = true;
     box.classList.add("downloading");
     let xhr = new XMLHttpRequest();
@@ -76,7 +76,7 @@ function startdownload(box) {
     }
     xhr.onerror = function () {
         console.error("Download failed");
-        alert("Beatmap download failed. Please retry later. If you live in Asia try a VPN such as ProtonVPN")
+        alert("Beatmap download failed. Please retry later.")
         box.downloading = false;
         box.classList.remove("downloading");
         log_to_server("fail " + box.sid);
